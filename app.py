@@ -160,6 +160,7 @@ def classify_travel_query(user_input):
     return classification
 
 ################### Streamlit Interface ###################
+################### Streamlit Interface ###################
 def main():
     st.title("Travel Chatbot Assistant")
 
@@ -192,6 +193,11 @@ def main():
             else:
                 response = "Sorry, I couldn't classify your query. Please ask again."
 
-            # Append to session state history
+            # Append user input and bot response to session state history
             st.session_state.history.append(f"You: {user_input}")
-            st.session_state.
+            st.session_state.history.append(f"Bot: {response}")
+
+    # Display the conversation history
+    if st.session_state.history:
+        for message in st.session_state.history:
+            st.write(message)
